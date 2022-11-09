@@ -4,9 +4,12 @@ import axios from "axios";
 function CatalogUslug(props) {
   const [arrayCatalog, setArrayCatalog] = useState(null);
   const [idCatalog, setIdCatalog] = useState("");
+
   const [nameCatalog, setNameCatalog] = useState("");
   const [componentCatalog, setComponentCatalog] = useState("");
   const [refreshTables, setRefreshTables] = useState(false);
+
+  const [addButton, setAddButton] = useState(true);
   useEffect(() => {
     axios({
       method: "get",
@@ -19,6 +22,7 @@ function CatalogUslug(props) {
         setRefreshTables(false);
         setNameCatalog("");
         setComponentCatalog("");
+        setAddButton(true);
       })
       .catch(function () {
         console.log("Ошибка");
@@ -28,6 +32,42 @@ function CatalogUslug(props) {
     setIdCatalog(id);
     setNameCatalog(name);
     setComponentCatalog(components);
+    setAddButton(false);
+  }
+  function remove(id) {
+    let formData = new FormData();
+    formData.append("id", id);
+    axios({
+      method: "post",
+      url: "http://localhost:80/uslugi/api/removeCatalog.php",
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(function (response) {
+        console.log(response);
+        setRefreshTables(true);
+      })
+      .catch(function () {
+        console.log("Ошибка");
+      });
+  }
+  function add(name, components) {
+    let formData = new FormData();
+    formData.append("name", name);
+    formData.append("components", components);
+    axios({
+      method: "post",
+      url: "http://localhost:80/uslugi/api/addCatalog.php",
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(function (response) {
+        console.log(response);
+        setRefreshTables(true);
+      })
+      .catch(function () {
+        console.log("Ошибка");
+      });
   }
   function update() {
     let formData = new FormData();
@@ -72,10 +112,18 @@ function CatalogUslug(props) {
           />
         </td>
         <td>
-          <button disabled={idCatalog === "" ? "enabled" : ""} onClick={update}>
+          <button
+            disabled={addButton === true ? "enabled" : ""}
+            onClick={update}
+          >
             Сохранить
           </button>
-          <button disabled={idCatalog !== "" ? "enabled" : ""}>Добавить</button>
+          <button
+            disabled={addButton === false ? "enabled" : ""}
+            onClick={() => add(nameCatalog, componentCatalog)}
+          >
+            Добавить
+          </button>
         </td>
       </tr>
       {arrayCatalog !== null &&
@@ -87,6 +135,7 @@ function CatalogUslug(props) {
               <button onClick={() => edit(data.id, data.name, data.components)}>
                 Изменить
               </button>
+              <button onClick={() => remove(data.id)}>Удалить</button>
             </td>
           </tr>
         ))}

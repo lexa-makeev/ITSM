@@ -8,7 +8,10 @@ function Auth() {
 
   const [valueEmailReg, setValueEmailReg] = useState("");
   const [valuePassReg, setValuePassReg] = useState("");
-  const [valueRoleReg, setValueRoleReg] = useState("");
+  const [valueRoleReg, setValueRoleReg] = useState(1);
+  const [valueNameReg, setValueNameReg] = useState("");
+  const [valueFamReg, setValueFamReg] = useState("");
+  const [valueOtchReg, setValueOtchReg] = useState("");
 
   const [valueEmail, setValueEmail] = useState("");
   const [valuePass, setValuePass] = useState("");
@@ -18,6 +21,9 @@ function Auth() {
     formData.append("email_reg", valueEmailReg);
     formData.append("pass_reg", valuePassReg);
     formData.append("role", valueRoleReg);
+    formData.append("name_reg", valueNameReg);
+    formData.append("fam_reg", valueFamReg);
+    formData.append("otch_reg", valueOtchReg);
     axios({
       method: "post",
       url: "http://localhost:80/uslugi/api/reg.php",
@@ -54,6 +60,7 @@ function Auth() {
           localStorage.setItem("email", valueEmail);
           localStorage.setItem("role", response.data.role);
           navigate("/");
+          window.location.reload();
         }
         if (response.data === 1) {
           console.log("Пароль неверный!");
@@ -73,6 +80,39 @@ function Auth() {
           <>
             <form onSubmit={regSubmit}>
               <h1>Панель регистрации</h1>
+              <div>
+                <label htmlFor="email_reg">Имя:</label>
+                <input
+                  onChange={(e) => setValueNameReg(e.target.value)}
+                  value={valueNameReg}
+                  name="name_reg"
+                  placeholder="Введите ваше имя"
+                  id="name_reg"
+                  type="text"
+                />
+              </div>
+              <div>
+                <label htmlFor="email_reg">Фамилия:</label>
+                <input
+                  onChange={(e) => setValueFamReg(e.target.value)}
+                  value={valueFamReg}
+                  name="fam_reg"
+                  placeholder="Введите вашу фамилию"
+                  id="fam_reg"
+                  type="text"
+                />
+              </div>
+              <div>
+                <label htmlFor="email_reg">Отчество:</label>
+                <input
+                  onChange={(e) => setValueOtchReg(e.target.value)}
+                  value={valueOtchReg}
+                  name="otch_reg"
+                  placeholder="Введите ваше отчество"
+                  id="otch_reg"
+                  type="text"
+                />
+              </div>
               <div>
                 <label htmlFor="email_reg">Ваша почта:</label>
                 <input
