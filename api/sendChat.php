@@ -6,12 +6,12 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 include "hrlib.php";
 $db = new DB;
 $toID = $_POST["toID"];
-$fromID = $_POST["fromID"];
+$from = $_POST["from"];
 $message = $_POST["message"];
 $now = new DateTime();
 $date = $now->format('Y-m-d H:i:s');
-if (isset($toID) && isset($fromID) && isset($message)) {
-    $result = $db->sendMessage($toID, $fromID, $message, $date);
+if (isset($toID) && isset($from) && isset($message)) {
+    $result = $db->sendMessage($toID, $from, $message, $date);
     echo json_encode($result);
 } else {
     return 0;
