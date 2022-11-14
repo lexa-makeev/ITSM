@@ -16,6 +16,7 @@ function Auth() {
   const [valueEmail, setValueEmail] = useState("");
   const [valuePass, setValuePass] = useState("");
   function regSubmit(e) {
+    console.log("!!");
     e.preventDefault();
     let formData = new FormData();
     formData.append("email_reg", valueEmailReg);
@@ -31,6 +32,7 @@ function Auth() {
       headers: { "Content-Type": "multipart/form-data" },
     })
       .then(function (response) {
+        console.log(response);
         if (response.data === true) {
           setReg(false);
         }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function CatalogUslug(props) {
+function CatalogUslug() {
   const [arrayCatalog, setArrayCatalog] = useState(null);
   const [idCatalog, setIdCatalog] = useState("");
 
@@ -98,7 +98,6 @@ function CatalogUslug(props) {
         <td>
           <input
             type="text"
-            defaultValue={nameCatalog}
             onChange={(e) => setNameCatalog(e.target.value)}
             value={nameCatalog}
           />
@@ -106,7 +105,6 @@ function CatalogUslug(props) {
         <td>
           <input
             type="text"
-            defaultValue={componentCatalog}
             onChange={(e) => setComponentCatalog(e.target.value)}
             value={componentCatalog}
           />
