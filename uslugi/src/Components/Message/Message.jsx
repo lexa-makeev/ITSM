@@ -6,7 +6,6 @@ function Message(props) {
   const [allMessageID, setAllMessageID] = useState(null);
   const [valueMessage, setValueMessage] = useState("");
   const [toMessage, setToMessage] = useState("");
-  const [fromMessage, setFromMessage] = useState("");
   useEffect(() => {
     let formData = new FormData();
     formData.append("email", localStorage.getItem("email"));
@@ -47,6 +46,7 @@ function Message(props) {
         console.log("Ошибка");
       });
   }
+
   function sendMessage(id) {
     let formData = new FormData();
     formData.append("toID", id);
@@ -74,7 +74,9 @@ function Message(props) {
           {allMessage !== null &&
             allMessage.map((data) => (
               <div className="message_to" onClick={() => getChatId(data.id)}>
-                <p>{data.name}</p>
+                <p>
+                  {data.fam} {data.name} {data.otch}
+                </p>
               </div>
             ))}
         </div>
@@ -83,7 +85,9 @@ function Message(props) {
             allMessageID.map((data) => (
               <div className="message">
                 <div className="date_name">
-                  <p>{data.name}</p>
+                  <p className="name_message">
+                    {data.fam} {data.name} {data.otch}
+                  </p>
                   <p className="date">{data.date}</p>
                 </div>
                 <p>{data.message}</p>

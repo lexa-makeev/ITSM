@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 function IncedentTex() {
   const navigate = useNavigate();
   const [getAllIncedent, setGetAllIncedent] = useState(null);
+  const [valueName, setValueName] = useState(null);
+
   useEffect(() => {
     let formData = new FormData();
     formData.append("email", localStorage.getItem("email"));
@@ -21,18 +23,44 @@ function IncedentTex() {
       .catch(function () {
         console.log("Ошибка");
       });
+
+    let Data = new FormData();
+    Data.append("email", localStorage.getItem("email"));
+    axios({
+      method: "post",
+      url: "http://localhost:80/uslugi/api/getName.php",
+      data: Data,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(function (response) {
+        setValueName(response.data[0]);
+        console.log(valueName);
+      })
+      .catch(function () {
+        console.log("Ошибка");
+      });
   }, []);
   return (
     <>
       <h1>
         Сотрудник{" "}
-        <span>
-          {getAllIncedent !== null && getAllIncedent[0].fam}{" "}
-          {getAllIncedent !== null && getAllIncedent[0].name}{" "}
-          {getAllIncedent !== null && getAllIncedent[0].otch}
-        </span>
+        {valueName !== null && (
+          <span>
+            {valueName.fam} {valueName.name} {valueName.otch}
+          </span>
+        )}
       </h1>
-      <table>
+      {localStorage.getItem("role") !== "3" && (
+        <button
+          onClick={() => {
+            navigate("/newcard");
+          }}
+        >
+          Добавить новый инцидент
+        </button>
+      )}
+
+      <table className="incedent">
         <tr>
           <th>Дата регистрации</th>
           <th>Номер</th>
