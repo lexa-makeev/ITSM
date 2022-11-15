@@ -95,33 +95,42 @@ function CatalogUslug() {
         <th>Компоненты</th>
       </tr>
       <tr>
+        {localStorage.getItem("role") === "1" && (
+          <>
+            <td>
+              <input
+                type="text"
+                onChange={(e) => setNameCatalog(e.target.value)}
+                value={nameCatalog}
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                onChange={(e) => setComponentCatalog(e.target.value)}
+                value={componentCatalog}
+              />
+            </td>
+          </>
+        )}
         <td>
-          <input
-            type="text"
-            onChange={(e) => setNameCatalog(e.target.value)}
-            value={nameCatalog}
-          />
-        </td>
-        <td>
-          <input
-            type="text"
-            onChange={(e) => setComponentCatalog(e.target.value)}
-            value={componentCatalog}
-          />
-        </td>
-        <td>
-          <button
-            disabled={addButton === true ? "enabled" : ""}
-            onClick={update}
-          >
-            Сохранить
-          </button>
-          <button
-            disabled={addButton === false ? "enabled" : ""}
-            onClick={() => add(nameCatalog, componentCatalog)}
-          >
-            Добавить
-          </button>
+          {localStorage.getItem("role") === "1" && (
+            <>
+              <button
+                disabled={addButton === true ? "enabled" : ""}
+                onClick={update}
+              >
+                Сохранить
+              </button>
+
+              <button
+                disabled={addButton === false ? "enabled" : ""}
+                onClick={() => add(nameCatalog, componentCatalog)}
+              >
+                Добавить
+              </button>
+            </>
+          )}
         </td>
       </tr>
       {arrayCatalog !== null &&
@@ -130,10 +139,16 @@ function CatalogUslug() {
             <td>{data.name}</td>
             <td>{data.components}</td>
             <td>
-              <button onClick={() => edit(data.id, data.name, data.components)}>
-                Изменить
-              </button>
-              <button onClick={() => remove(data.id)}>Удалить</button>
+              {localStorage.getItem("role") === "1" && (
+                <button
+                  onClick={() => edit(data.id, data.name, data.components)}
+                >
+                  Изменить
+                </button>
+              )}
+              {localStorage.getItem("role") === "1" && (
+                <button onClick={() => remove(data.id)}>Удалить</button>
+              )}
             </td>
           </tr>
         ))}

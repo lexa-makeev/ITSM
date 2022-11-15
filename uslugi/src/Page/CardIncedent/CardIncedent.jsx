@@ -112,7 +112,7 @@ function CardIncedent(props) {
       <div className="button">
         <button onClick={() => updateButton("В работе")}>В работе</button>
         <button onClick={() => updateButton("Выполнена")}>Выполнена</button>
-        {localStorage.getItem("role") !== 3 && (
+        {localStorage.getItem("role") !== "3" && (
           <button onClick={() => updateButton("Закончена")}>Закончена</button>
         )}
       </div>
