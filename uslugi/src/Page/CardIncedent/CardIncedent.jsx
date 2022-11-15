@@ -73,7 +73,7 @@ function CardIncedent(props) {
           </div>
           <div className="opis">
             <h2>Полное описание</h2>
-            <p>Описание</p>
+            <p>Описание:</p>
             <p>{getAllIncedent !== null && getAllIncedent.opis}</p>
           </div>
         </div>
@@ -83,7 +83,12 @@ function CardIncedent(props) {
             <p>
               Контрагент:{" "}
               <span>
-                {getAllIncedent !== null && getAllIncedent.contr_agent}
+                {getAllIncedent !== null &&
+                  getAllIncedent.fam_kontr +
+                    " " +
+                    getAllIncedent.name_kontr +
+                    " " +
+                    getAllIncedent.otch_kontr}
               </span>
             </p>
           </div>
@@ -107,6 +112,9 @@ function CardIncedent(props) {
       <div className="button">
         <button onClick={() => updateButton("В работе")}>В работе</button>
         <button onClick={() => updateButton("Выполнена")}>Выполнена</button>
+        {localStorage.getItem("role") !== 3 && (
+          <button onClick={() => updateButton("Закончена")}>Закончена</button>
+        )}
       </div>
     </section>
   );

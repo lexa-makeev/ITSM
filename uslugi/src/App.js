@@ -7,6 +7,7 @@ import Error from "./Page/Error/Error";
 import CardIncedent from "./Page/CardIncedent/CardIncedent";
 import Header from "./Components/Header";
 import NewCardIncedent from "./Page/NewCardIncedent/NewCardIncedent";
+import UpdateCardIncedent from "./Page/UpdateCardIncedent/UpdateCardIncedent";
 function App() {
   return (
     <>
@@ -23,6 +24,9 @@ function App() {
         )}
         {localStorage.getItem("role") === null && (
           <Route path="/auth" element={<Auth />}></Route>
+        )}
+        {localStorage.getItem("role") !== null && (
+          <Route path="/updatecard" element={<UpdateCardIncedent />}></Route>
         )}
         <Route path="*" element={<Error />}></Route>
       </Routes>

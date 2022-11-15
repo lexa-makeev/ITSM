@@ -50,15 +50,15 @@ function IncedentTex() {
           </span>
         )}
       </h1>
-      {localStorage.getItem("role") !== "3" && (
-        <button
-          onClick={() => {
-            navigate("/newcard");
-          }}
-        >
-          Добавить новый инцидент
-        </button>
-      )}
+      {/*{localStorage.getItem("role") !== "3" && (*/}
+      {/*  <button*/}
+      {/*    onClick={() => {*/}
+      {/*      navigate("/newcard");*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    Добавить новый инцидент*/}
+      {/*  </button>*/}
+      {/*)}*/}
 
       <table className="incedent">
         <tr>
