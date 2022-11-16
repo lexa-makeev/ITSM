@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./NewCardIncedent.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function NewCardIncedent(props) {
   const [valueName, setValueName] = useState(null);
   const [valueCatalog, setValueCatalog] = useState(null);
@@ -13,6 +14,7 @@ function NewCardIncedent(props) {
   const [valueEndTime, setValueEndTime] = useState(null);
   const [valueOpis, setValueOpis] = useState(null);
   const [valueOtvetsv, setValueOtvetsv] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     let Data = new FormData();
     Data.append("email", localStorage.getItem("email"));
@@ -74,6 +76,9 @@ function NewCardIncedent(props) {
       headers: { "Content-Type": "multipart/form-data" },
     })
       .then(function (response) {
+        if (response.data === true) {
+          navigate("/");
+        }
         console.log(response);
       })
       .catch(function () {

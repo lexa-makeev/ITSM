@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./UpdateCardIncedent.css";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 function UpdateCardIncedent(props) {
+  const navigate = useNavigate();
   const { state } = useLocation();
   const { id } = state;
 
@@ -93,6 +94,9 @@ function UpdateCardIncedent(props) {
     })
       .then(function (response) {
         console.log(response);
+        if (response.data === true) {
+          navigate("/");
+        }
       })
       .catch(function () {
         console.log("Ошибка");
