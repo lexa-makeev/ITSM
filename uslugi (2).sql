@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 15 2022 г., 20:39
+-- Время создания: Ноя 20 2022 г., 11:58
 -- Версия сервера: 8.0.31
 -- Версия PHP: 8.1.10
 
@@ -38,7 +38,7 @@ CREATE TABLE `components` (
 --
 
 INSERT INTO `components` (`id`, `name`, `components`) VALUES
-(2, 'Инфраструктура', '');
+(2, 'Создание инфраструктуры', 'Bizagi, Ramus');
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,9 @@ CREATE TABLE `incedent` (
 --
 
 INSERT INTO `incedent` (`id`, `date`, `type`, `topic`, `status`, `end_date`, `opis`, `components_id`, `users_id`, `contragent_id`) VALUES
-(4, '2022-11-15 18:27:26', 'Инцидент', 'Новая', 'В работе', '2022-11-17 20:31:00', 'мчапвыавы', 2, 5, 4);
+(4, '2022-11-15 18:27:26', 'Инцидент', 'Новая', 'В работе', '2022-11-14 20:31:00', 'мчапвыавы', 2, 5, 4),
+(9, '2022-11-16 10:37:56', 'Инцидент', 'Сделать инфраструктуру', 'Новая', '2022-11-20 12:37:00', 'Надо сделать инфраструктуру', 2, 7, 4),
+(10, '2022-11-16 10:42:17', 'Инцидент', 'Новая3', 'Новая', '2022-11-25 12:46:00', 'Новая3', 2, 5, 4);
 
 -- --------------------------------------------------------
 
@@ -113,7 +115,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `pass`, `role`, `name`, `fam`, `otch`) VALUES
 (4, '123@mail.ru', '$2y$10$5Ye81Q4n0ReqZHw9AFAOQeFA1IjpwaY5mYaxaQb18kEAtkU/ur3s6', 2, 'Иван', 'Иванов', 'Сергеевич'),
 (5, '1234@mail.ru', '$2y$10$pTp7q0DEHQRWnpCRZzNTvuIeEmDW5DFg.Xq3mxW4B1LYhgg.HJgbu', 3, 'Эмильен', 'Жабер', 'Таксисович'),
-(6, '12345@mail.ru', '$2y$10$yHC7eG9Uhy0rEIa3nqhynO4W/iXzQ8f9/grUArnIZlkVrkxm5irgm', 1, 'Администратор', 'Админ', 'Админович');
+(6, '12345@mail.ru', '$2y$10$yHC7eG9Uhy0rEIa3nqhynO4W/iXzQ8f9/grUArnIZlkVrkxm5irgm', 1, 'Администратор', 'Админ', 'Админович'),
+(7, '123456@mail.ru', '$2y$10$3yPhFbx7Q42W0iBGZjbX4.roowXGOB5qUUiRE4y4tw/fNWvtpATAe', 3, 'Илья', 'Абросов', 'Фёдорович');
 
 --
 -- Индексы сохранённых таблиц
@@ -162,7 +165,7 @@ ALTER TABLE `components`
 -- AUTO_INCREMENT для таблицы `incedent`
 --
 ALTER TABLE `incedent`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `message`
@@ -174,7 +177,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
