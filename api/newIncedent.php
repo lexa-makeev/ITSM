@@ -13,7 +13,7 @@ $EndTime = $_POST["EndTime"];
 $opis = $_POST["opis"];
 $otvetsv = $_POST["otvetsv"];
 $kontragent = $_POST["kontragent"];
-if (isset($topic) && isset($usluga) && isset($type) && isset($status) && isset($EndTime) && isset($opis) && isset($otvetsv) && isset($kontragent)) {
+if (isset($topic) && isset($usluga) && isset($type) && isset($status) && isset($opis) && isset($otvetsv) && isset($kontragent)) {
     $result = $db->sendIncedent($topic, $usluga, $type , $status, $EndTime, $opis, $otvetsv, $kontragent);
     echo json_encode($result);
 } else {

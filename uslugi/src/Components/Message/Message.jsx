@@ -7,21 +7,39 @@ function Message(props) {
   const [valueMessage, setValueMessage] = useState("");
   const [toMessage, setToMessage] = useState("");
   useEffect(() => {
-    let formData = new FormData();
-    formData.append("email", localStorage.getItem("email"));
-    axios({
-      method: "post",
-      url: "http://localhost:80/uslugi/api/getAllChat.php",
-      data: formData,
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-      .then(function (response) {
-        setAllMessage(response.data);
-        console.log(response);
+    if (localStorage.getItem("role") !== "1") {
+      let formData = new FormData();
+      formData.append("email", localStorage.getItem("email"));
+      axios({
+        method: "post",
+        url: "http://localhost:80/uslugi/api/getAllChat.php",
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
       })
-      .catch(function () {
-        console.log("Ошибка");
-      });
+        .then(function (response) {
+          setAllMessage(response.data);
+          console.log(response);
+        })
+        .catch(function () {
+          console.log("Ошибка");
+        });
+    } else {
+      let formData = new FormData();
+      formData.append("email", localStorage.getItem("email"));
+      axios({
+        method: "post",
+        url: "http://localhost:80/uslugi/api/getAllChatAdmin.php",
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+        .then(function (response) {
+          setAllMessage(response.data);
+          console.log(response);
+        })
+        .catch(function () {
+          console.log("Ошибка");
+        });
+    }
   }, []);
   function getChatId(id) {
     let formData = new FormData();

@@ -142,16 +142,18 @@ function NewCardIncedent(props) {
                   <option value="Новая">Новая</option>
                 </select>
               </p>
-              <p>
-                Время завершения:
-                <input
-                  name="EndTime"
-                  id="EndTime"
-                  type="datetime-local"
-                  onChange={(e) => setValueEndTime(e.target.value)}
-                  value={valueEndTime}
-                />
-              </p>
+              {localStorage.getItem("role") === "3" && (
+                <p>
+                  Время завершения:
+                  <input
+                    name="EndTime"
+                    id="EndTime"
+                    type="datetime-local"
+                    onChange={(e) => setValueEndTime(e.target.value)}
+                    value={valueEndTime}
+                  />
+                </p>
+              )}
             </div>
             <div className="opis">
               <h2>Полное описание</h2>

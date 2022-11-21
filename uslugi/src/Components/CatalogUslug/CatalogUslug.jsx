@@ -95,7 +95,7 @@ function CatalogUslug() {
         <th>Компоненты</th>
       </tr>
       <tr>
-        {localStorage.getItem("role") === "1" && (
+        {localStorage.getItem("role") !== "3" && (
           <>
             <td>
               <input
@@ -114,7 +114,7 @@ function CatalogUslug() {
           </>
         )}
         <td>
-          {localStorage.getItem("role") === "1" && (
+          {localStorage.getItem("role") !== "3" && (
             <>
               <button
                 disabled={addButton === true ? "enabled" : ""}
@@ -139,14 +139,14 @@ function CatalogUslug() {
             <td>{data.name}</td>
             <td>{data.components}</td>
             <td>
-              {localStorage.getItem("role") === "1" && (
+              {localStorage.getItem("role") !== "3" && (
                 <button
                   onClick={() => edit(data.id, data.name, data.components)}
                 >
                   Изменить
                 </button>
               )}
-              {localStorage.getItem("role") === "1" && (
+              {localStorage.getItem("role") !== "3" && (
                 <button onClick={() => remove(data.id)}>Удалить</button>
               )}
             </td>

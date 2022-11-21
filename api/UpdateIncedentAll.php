@@ -13,7 +13,7 @@ $EndTime = $_POST["EndTime"];
 $opis = $_POST["opis"];
 $otvetsv = $_POST["otvetsv"];
 $id = $_POST["id"];
-if (isset($topic) && isset($usluga) && isset($type) && isset($status) && isset($EndTime) && isset($opis) && isset($otvetsv) && isset($id)) {
+if (isset($topic) && isset($usluga) && isset($type) && isset($status) && isset($opis) && isset($otvetsv) && isset($id)) {
     $result = $db->updateIncedentAll($topic, $usluga, $type , $status, $EndTime, $opis, $otvetsv, $id);
     echo json_encode($result);
 } else {
