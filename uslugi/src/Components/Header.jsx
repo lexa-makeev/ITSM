@@ -34,6 +34,8 @@ function Header() {
       return "Рядовой сотрудник";
     } else if (value === 3) {
       return "Сотрудник технической поддержки";
+    } else if (value === 4) {
+      return "Клиент";
     }
   }
   return (

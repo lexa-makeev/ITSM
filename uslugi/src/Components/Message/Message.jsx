@@ -6,6 +6,8 @@ function Message(props) {
   const [allMessageID, setAllMessageID] = useState(null);
   const [valueMessage, setValueMessage] = useState("");
   const [toMessage, setToMessage] = useState("");
+  const [refreshMessage, setRefreshMessage] = useState(false);
+  const [valueIdChat, setValueIdChat] = useState("");
   useEffect(() => {
     if (localStorage.getItem("role") !== "1") {
       let formData = new FormData();
@@ -41,6 +43,11 @@ function Message(props) {
         });
     }
   }, []);
+  useEffect(() => {
+    getChatId(valueIdChat);
+    setValueMessage("");
+    setRefreshMessage(false);
+  }, [refreshMessage]);
   function getChatId(id) {
     let formData = new FormData();
     console.log(id);
@@ -78,7 +85,8 @@ function Message(props) {
     })
       .then(function (response) {
         console.log(response);
-        window.location.reload();
+        setRefreshMessage(true);
+        // window.location.reload();
       })
       .catch(function () {
         console.log("Ошибка");
@@ -91,34 +99,42 @@ function Message(props) {
           <h2>Ваш чат</h2>
           {allMessage !== null &&
             allMessage.map((data) => (
-              <div className="message_to" onClick={() => getChatId(data.id)}>
+              <div
+                className="message_to"
+                onClick={() => {
+                  getChatId(data.id);
+                  setValueIdChat(data.id);
+                }}
+              >
                 <p>
                   {data.fam} {data.name} {data.otch}
                 </p>
               </div>
             ))}
         </div>
-        <div className="right">
-          {allMessageID !== null &&
-            allMessageID.map((data) => (
-              <div className="message">
-                <div className="date_name">
-                  <p className="name_message">
-                    {data.fam} {data.name} {data.otch}
-                  </p>
-                  <p className="date">{data.date}</p>
+        {valueIdChat !== "" && (
+          <div className="right">
+            {allMessageID !== null &&
+              allMessageID.map((data) => (
+                <div className="message">
+                  <div className="date_name">
+                    <p className="name_message">
+                      {data.fam} {data.name} {data.otch}
+                    </p>
+                    <p className="date">{data.date}</p>
+                  </div>
+                  <p>{data.message}</p>
                 </div>
-                <p>{data.message}</p>
-              </div>
-            ))}
+              ))}
 
-          <input
-            type="text"
-            onChange={(e) => setValueMessage(e.target.value)}
-            value={valueMessage}
-          />
-          <button onClick={() => sendMessage(toMessage)}>Отправить</button>
-        </div>
+            <input
+              type="text"
+              onChange={(e) => setValueMessage(e.target.value)}
+              value={valueMessage}
+            />
+            <button onClick={() => sendMessage(toMessage)}>Отправить</button>
+          </div>
+        )}
       </div>
     </section>
   );

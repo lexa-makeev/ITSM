@@ -8,6 +8,8 @@ import CardIncedent from "./Page/CardIncedent/CardIncedent";
 import Header from "./Components/Header";
 import NewCardIncedent from "./Page/NewCardIncedent/NewCardIncedent";
 import UpdateCardIncedent from "./Page/UpdateCardIncedent/UpdateCardIncedent";
+import AuthClient from "./Page/AuthClient/AuthClient";
+import NewCardIncedentClient from "./Page/NewCardIncedentClient/NewCardIncedentClient";
 function App() {
   return (
     <>
@@ -17,6 +19,12 @@ function App() {
           <Route path="/newcard" element={<NewCardIncedent />}></Route>
         )}
         {localStorage.getItem("role") !== null && (
+          <Route
+            path="/newcardclient"
+            element={<NewCardIncedentClient />}
+          ></Route>
+        )}
+        {localStorage.getItem("role") !== null && (
           <Route path="/" element={<Main />}></Route>
         )}
         {localStorage.getItem("role") !== null && (
@@ -24,6 +32,9 @@ function App() {
         )}
         {localStorage.getItem("role") === null && (
           <Route path="/auth" element={<Auth />}></Route>
+        )}
+        {localStorage.getItem("role") === null && (
+          <Route path="/authclient" element={<AuthClient />}></Route>
         )}
         {localStorage.getItem("role") !== null && (
           <Route path="/updatecard" element={<UpdateCardIncedent />}></Route>

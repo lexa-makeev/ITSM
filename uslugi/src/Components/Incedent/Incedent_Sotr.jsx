@@ -62,16 +62,25 @@ function IncedentTex() {
           </span>
         )}
       </h1>
-      {localStorage.getItem("role") !== "3" && (
+      {localStorage.getItem("role") !== "3" &&
+        localStorage.getItem("role") !== "4" && (
+          <button
+            onClick={() => {
+              navigate("/newcard");
+            }}
+          >
+            Добавить новый инцидент
+          </button>
+        )}
+      {localStorage.getItem("role") === "4" && (
         <button
           onClick={() => {
-            navigate("/newcard");
+            navigate("/newcardclient");
           }}
         >
           Добавить новый инцидент
         </button>
       )}
-
       <table className="incedent">
         <tr>
           <th>Дата регистрации</th>
@@ -104,13 +113,15 @@ function IncedentTex() {
                 </button>
               </td>
               <td>
-                <button
-                  onClick={() =>
-                    navigate("/updatecard", { state: { id: data.id } })
-                  }
-                >
-                  Изменить
-                </button>
+                {localStorage.getItem("role") !== "4" && (
+                  <button
+                    onClick={() =>
+                      navigate("/updatecard", { state: { id: data.id } })
+                    }
+                  >
+                    Изменить
+                  </button>
+                )}
               </td>
             </tr>
           ))}

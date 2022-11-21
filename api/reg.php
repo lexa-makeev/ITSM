@@ -12,9 +12,10 @@ $role = $_POST["role"];
 $name = $_POST["name_reg"];
 $fam = $_POST["fam_reg"];
 $otch = $_POST["otch_reg"];
+$tel = $_POST["tel_reg"];
 if (isset($email) && isset($pass) && isset($role) && isset($name) && isset($fam) && isset($otch))
 {
-    $result = $db->reg($email, $pass, $role, $name, $fam, $otch);
+    $result = $db->reg($email, $pass, $role, $name, $fam, $otch, $tel);
     echo json_encode($result);
 }
 else{

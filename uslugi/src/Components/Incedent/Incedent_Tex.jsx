@@ -89,6 +89,17 @@ function IncedentTex() {
                   Посмотреть
                 </button>
               </td>
+              {data.end_date === "0000-00-00 00:00:00" && (
+                <td>
+                  <button
+                    onClick={() =>
+                      navigate("/card", { state: { id: data.id } })
+                    }
+                  >
+                    Добавить дату
+                  </button>
+                </td>
+              )}
             </tr>
           ))}
       </table>

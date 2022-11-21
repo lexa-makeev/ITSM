@@ -91,6 +91,10 @@ function CardIncedent(props) {
                     getAllIncedent.otch_kontr}
               </span>
             </p>
+            <p>
+              Телефон:{" "}
+              <span>{getAllIncedent !== null && getAllIncedent.tel_kontr}</span>
+            </p>
           </div>
           <div className="otvetstv">
             <h2>Ответственный</h2>
@@ -109,13 +113,17 @@ function CardIncedent(props) {
           </div>
         </div>
       </div>
-      <div className="button">
-        <button onClick={() => updateButton("В работе")}>В работе</button>
-        <button onClick={() => updateButton("Выполнена")}>Выполнена</button>
-        {localStorage.getItem("role") !== "3" && (
-          <button onClick={() => updateButton("Закончена")}>Закончена</button>
-        )}
-      </div>
+      {localStorage.getItem("role") === "4" ? (
+        ""
+      ) : (
+        <div className="button">
+          <button onClick={() => updateButton("В работе")}>В работе</button>
+          <button onClick={() => updateButton("Выполнена")}>Выполнена</button>
+          {localStorage.getItem("role") !== "3" && (
+            <button onClick={() => updateButton("Закончена")}>Закончена</button>
+          )}
+        </div>
+      )}
     </section>
   );
 }

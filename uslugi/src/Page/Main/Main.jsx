@@ -10,12 +10,12 @@ function Main() {
   useEffect(() => {
     if (localStorage.getItem("role") === "1") {
       setNav(1);
-    }
-    if (localStorage.getItem("role") === "2") {
+    } else if (localStorage.getItem("role") === "2") {
       setNav(1);
-    }
-    if (localStorage.getItem("role") === "3") {
+    } else if (localStorage.getItem("role") === "3") {
       setNav(2);
+    } else if (localStorage.getItem("role") === "4") {
+      setNav(1);
     }
   }, []);
 
@@ -33,7 +33,9 @@ function Main() {
         </nav>
         {localStorage.getItem("role") !== "3" && nav === 1 && <CatalogUslug />}
         {localStorage.getItem("role") === "3" && nav === 3 && <Incedent_Tex />}
-        {localStorage.getItem("role") === "2" && nav === 3 && <Incedent_Sotr />}
+        {(localStorage.getItem("role") === "2" ||
+          localStorage.getItem("role") === "4") &&
+          nav === 3 && <Incedent_Sotr />}
         {localStorage.getItem("role") === "1" && nav === 3 && <Incedent_Adm />}
         {nav === 2 && <Message />}
       </div>
