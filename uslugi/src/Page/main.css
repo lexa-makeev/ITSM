@@ -2,8 +2,41 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 .container{
     width: 1400px;
     margin: 0 auto;
+}
+button{
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    border: none;
+    background-color: #4883f8;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+table {
+    text-align: center;
+    border-collapse: collapse;
+    /*убираем пустые промежутки между ячейками*/
+    border: 2px solid grey;
+    /*устанавливаем для таблицы внешнюю границу серого цвета толщиной 1px*/
+}
+th {
+    border: 1px solid grey;
+}
+td {
+    border: 1px solid grey;
+}
+th, td {
+    padding: 10px 15px;
+}
+td button{
+    margin-right: 10px;
+}
+td button:last-child{
+    margin-right: 0;
 }

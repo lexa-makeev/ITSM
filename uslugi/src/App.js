@@ -5,7 +5,7 @@ import Auth from "./Page/Auth/Auth";
 import Main from "./Page/Main/Main";
 import Error from "./Page/Error/Error";
 import CardIncedent from "./Page/CardIncedent/CardIncedent";
-import Header from "./Components/Header";
+import Header from "./Components/Header/Header";
 import NewCardIncedent from "./Page/NewCardIncedent/NewCardIncedent";
 import UpdateCardIncedent from "./Page/UpdateCardIncedent/UpdateCardIncedent";
 import AuthClient from "./Page/AuthClient/AuthClient";

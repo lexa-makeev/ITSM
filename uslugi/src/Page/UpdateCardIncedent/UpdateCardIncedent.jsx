@@ -214,7 +214,10 @@ function UpdateCardIncedent(props) {
                 <select
                   name="otvetsv"
                   id="otvetsv"
-                  onChange={(e) => setValueOtvetsv(e.target.value)}
+                  onChange={(e) => {
+                    setValueOtvetsv(e.target.value);
+                    console.log(e);
+                  }}
                   value={valueOtvetsv}
                 >
                   <option value={valueOtvetsv}>{valueOtvetsvID}</option>

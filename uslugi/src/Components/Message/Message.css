@@ -1,11 +1,20 @@
 #chat .message_to{
-    background-color: rgb(177, 177, 177);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 150px;
+    background-color: #4883f8;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 250px;
     border-radius: 10px;
-    text-align: center;
     margin-bottom: 10px;
+    color: white;
+}
+#chat .message_to p{
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#chat .message_to p span{
+    font-weight: normal;
 }
 #chat .message_to{
     cursor: pointer;
@@ -16,13 +25,16 @@
 }
 
 #chat .container .right{
+    border: 2px solid #4883f8;
+    padding-top: 10px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     width: 800px;
+    position: relative;
+    height: 550px;
 }
-#chat .container .right input{
-    margin-top: 20px;
-}
+
 #chat .date_name{
     display: flex;
     align-items: center;
@@ -32,9 +44,27 @@
     font-size: 12px;
 }
 #chat .message{
-    height: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
     margin-bottom: 10px;
+    background-color: #8fb8ff;
 }
 #chat .name_message{
     font-weight: bold;
+}
+#chat .inp_btn{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+}
+#chat .inp_btn input{
+    width: 697px;
+    height: 30px;
+}
+#chat  .all_mess{
+    height: 500px;
+    overflow-y: scroll;
 }

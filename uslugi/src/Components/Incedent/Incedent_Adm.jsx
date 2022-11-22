@@ -64,6 +64,7 @@ function IncedentTex() {
       </h1>
       {localStorage.getItem("role") !== "3" && (
         <button
+          className="new_btn"
           onClick={() => {
             navigate("/newcard");
           }}

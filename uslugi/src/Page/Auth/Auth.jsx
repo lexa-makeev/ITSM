@@ -149,7 +149,9 @@ function Auth() {
                   </option>
                 </select>
               </div>
-              <button type="submit">Регистрация</button>
+              <button type="submit" className="btn_reg">
+                Регистрация
+              </button>
             </form>
             <button
               onClick={() => {
@@ -188,6 +190,7 @@ function Auth() {
               <button type="submit">Войти</button>
             </form>
             <button
+              className="btn_reg"
               onClick={() => {
                 setReg(true);
               }}

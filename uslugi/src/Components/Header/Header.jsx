@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import "./Header.css";
 function Header() {
   const [valueName, setValueName] = useState(null);
   useEffect(() => {
@@ -39,16 +39,18 @@ function Header() {
     }
   }
   return (
-    <div className="container">
-      {valueName !== null && (
-        <p>
-          {valueName.fam} {valueName.name} {valueName.otch}{" "}
-          {role(valueName.role)}
-        </p>
-      )}
+    <header>
+      <div className="container">
+        {valueName !== null && (
+          <p>
+            {valueName.fam} {valueName.name} {valueName.otch}{" "}
+            <span>Роль: {role(valueName.role)}</span>
+          </p>
+        )}
 
-      <button onClick={() => clearStorage()}>Выйти из аккаунта</button>
-    </div>
+        <button onClick={() => clearStorage()}>Выйти</button>
+      </div>
+    </header>
   );
 }
 

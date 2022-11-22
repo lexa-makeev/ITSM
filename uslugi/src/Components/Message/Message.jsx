@@ -92,6 +92,17 @@ function Message(props) {
         console.log("Ошибка");
       });
   }
+  function role(value) {
+    if (value === 1) {
+      return "Администратор";
+    } else if (value === 2) {
+      return "Рядовой сотрудник";
+    } else if (value === 3) {
+      return "Сотрудник технической поддержки";
+    } else if (value === 4) {
+      return "Клиент";
+    }
+  }
   return (
     <section id="chat">
       <div className="container">
@@ -108,31 +119,36 @@ function Message(props) {
               >
                 <p>
                   {data.fam} {data.name} {data.otch}
+                  <span>{role(data.role)}</span>
                 </p>
               </div>
             ))}
         </div>
         {valueIdChat !== "" && (
           <div className="right">
-            {allMessageID !== null &&
-              allMessageID.map((data) => (
-                <div className="message">
-                  <div className="date_name">
-                    <p className="name_message">
-                      {data.fam} {data.name} {data.otch}
-                    </p>
-                    <p className="date">{data.date}</p>
+            <div className="all_mess">
+              {allMessageID !== null &&
+                allMessageID.map((data) => (
+                  <div className="message">
+                    <div className="date_name">
+                      <p className="name_message">
+                        {data.fam} {data.name} {data.otch}
+                      </p>
+                      <p className="date">{data.date}</p>
+                    </div>
+                    <p>{data.message}</p>
                   </div>
-                  <p>{data.message}</p>
-                </div>
-              ))}
+                ))}
+            </div>
 
-            <input
-              type="text"
-              onChange={(e) => setValueMessage(e.target.value)}
-              value={valueMessage}
-            />
-            <button onClick={() => sendMessage(toMessage)}>Отправить</button>
+            <div className="inp_btn">
+              <input
+                type="text"
+                onChange={(e) => setValueMessage(e.target.value)}
+                value={valueMessage}
+              />
+              <button onClick={() => sendMessage(toMessage)}>Отправить</button>
+            </div>
           </div>
         )}
       </div>

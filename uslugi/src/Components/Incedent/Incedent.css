@@ -4,3 +4,8 @@
 .incedent tr {
     text-align: center;
 }
+.new_btn{
+    width: 200px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}

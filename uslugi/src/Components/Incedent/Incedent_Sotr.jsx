@@ -54,17 +54,10 @@ function IncedentTex() {
   }
   return (
     <>
-      <h1>
-        Сотрудник{" "}
-        {valueName !== null && (
-          <span>
-            {valueName.fam} {valueName.name} {valueName.otch}
-          </span>
-        )}
-      </h1>
       {localStorage.getItem("role") !== "3" &&
         localStorage.getItem("role") !== "4" && (
           <button
+            className="new_btn"
             onClick={() => {
               navigate("/newcard");
             }}
@@ -74,6 +67,7 @@ function IncedentTex() {
         )}
       {localStorage.getItem("role") === "4" && (
         <button
+          className="new_btn"
           onClick={() => {
             navigate("/newcardclient");
           }}
@@ -112,8 +106,9 @@ function IncedentTex() {
                   Посмотреть
                 </button>
               </td>
-              <td>
-                {localStorage.getItem("role") !== "4" && (
+
+              {localStorage.getItem("role") !== "4" && (
+                <td>
                   <button
                     onClick={() =>
                       navigate("/updatecard", { state: { id: data.id } })
@@ -121,8 +116,8 @@ function IncedentTex() {
                   >
                     Изменить
                   </button>
-                )}
-              </td>
+                </td>
+              )}
             </tr>
           ))}
       </table>

@@ -171,9 +171,10 @@ function CatalogUslug() {
             <td>{data.components}</td>
             <td>{data.opis}</td>
             <td>{data.cost}</td>
-            <td>
-              {localStorage.getItem("role") !== "3" &&
-                localStorage.getItem("role") !== "4" && (
+
+            {localStorage.getItem("role") !== "3" &&
+              localStorage.getItem("role") !== "4" && (
+                <td>
                   <button
                     onClick={() =>
                       edit(
@@ -187,12 +188,9 @@ function CatalogUslug() {
                   >
                     Изменить
                   </button>
-                )}
-              {localStorage.getItem("role") !== "3" &&
-                localStorage.getItem("role") !== "4" && (
                   <button onClick={() => remove(data.id)}>Удалить</button>
-                )}
-            </td>
+                </td>
+              )}
           </tr>
         ))}
     </table>

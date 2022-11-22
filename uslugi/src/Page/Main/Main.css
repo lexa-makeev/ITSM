@@ -6,11 +6,18 @@
     list-style: none;
     cursor: pointer;
     margin-right: 20px;
+    font-size: 18px;
+    font-weight: bold;
 }
 #main nav ul{
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 #main nav{
     margin-bottom: 40px;
+    background-color: #8fb8ff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
 }

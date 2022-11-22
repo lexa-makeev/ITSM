@@ -7,7 +7,7 @@ function IncedentTex() {
   const navigate = useNavigate();
   const [getAllIncedent, setGetAllIncedent] = useState(null);
   const [valueName, setValueName] = useState(null);
-
+  const [valueEndTimeUpdate, setValueEndTimeUpdate] = useState("");
   useEffect(() => {
     let formData = new FormData();
     formData.append("email", localStorage.getItem("email"));
@@ -40,16 +40,25 @@ function IncedentTex() {
         console.log("Ошибка");
       });
   }, []);
+  function updateEndTime(id) {
+    let formData = new FormData();
+    formData.append("id", id);
+    formData.append("end_date", valueEndTimeUpdate);
+    axios({
+      method: "post",
+      url: "http://localhost:80/uslugi/api/updateEndTime.php",
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(function (response) {
+        window.location.reload();
+      })
+      .catch(function () {
+        console.log("Ошибка");
+      });
+  }
   return (
     <>
-      <h1>
-        Сотрудник{" "}
-        {valueName !== null && (
-          <span>
-            {valueName.fam} {valueName.name} {valueName.otch}
-          </span>
-        )}
-      </h1>
       {/*{localStorage.getItem("role") !== "3" && (*/}
       {/*  <button*/}
       {/*    onClick={() => {*/}
@@ -91,11 +100,12 @@ function IncedentTex() {
               </td>
               {data.end_date === "0000-00-00 00:00:00" && (
                 <td>
-                  <button
-                    onClick={() =>
-                      navigate("/card", { state: { id: data.id } })
-                    }
-                  >
+                  <input
+                    type="datetime-local"
+                    onChange={(e) => setValueEndTimeUpdate(e.target.value)}
+                    value={valueEndTimeUpdate}
+                  />
+                  <button onClick={() => updateEndTime(data.id)}>
                     Добавить дату
                   </button>
                 </td>
