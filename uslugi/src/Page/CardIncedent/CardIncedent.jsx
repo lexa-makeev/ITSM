@@ -43,7 +43,12 @@ function CardIncedent(props) {
   }
   return (
     <section id="card">
-      <a href="/">Перейти на главную</a>
+      {localStorage.getItem("role") !== "4" ? (
+        <a href="/">Перейти на главную</a>
+      ) : (
+        <a href="/mainclient">Перейти на главную</a>
+      )}
+
       <div className="container">
         <div className="left">
           <div className="info_kratk">

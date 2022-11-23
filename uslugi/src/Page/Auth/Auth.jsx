@@ -61,8 +61,13 @@ function Auth() {
           console.log("Вход успешный");
           localStorage.setItem("email", valueEmail);
           localStorage.setItem("role", response.data.role);
-          navigate("/");
-          window.location.reload();
+          if (response.data.role === 4) {
+            navigate("/mainclient");
+            window.location.reload();
+          } else {
+            navigate("/");
+            window.location.reload();
+          }
         }
         if (response.data === 1) {
           console.log("Пароль неверный!");

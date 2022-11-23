@@ -87,7 +87,7 @@ function NewCardIncedentClient(props) {
   }
   return (
     <section id="card">
-      <a href="/">Перейти на главную</a>
+      <a href="/mainclient">Перейти на главную</a>
       <div className="container">
         <form onSubmit={onSubmit}>
           <div className="left">

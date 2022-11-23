@@ -10,6 +10,7 @@ import NewCardIncedent from "./Page/NewCardIncedent/NewCardIncedent";
 import UpdateCardIncedent from "./Page/UpdateCardIncedent/UpdateCardIncedent";
 import AuthClient from "./Page/AuthClient/AuthClient";
 import NewCardIncedentClient from "./Page/NewCardIncedentClient/NewCardIncedentClient";
+import MainClient from "./Page/Main/MainClient";
 function App() {
   return (
     <>
@@ -26,6 +27,9 @@ function App() {
         )}
         {localStorage.getItem("role") !== null && (
           <Route path="/" element={<Main />}></Route>
+        )}
+        {localStorage.getItem("role") !== null && (
+          <Route path="/mainclient" element={<MainClient />}></Route>
         )}
         {localStorage.getItem("role") !== null && (
           <Route path="/card" element={<CardIncedent />}></Route>

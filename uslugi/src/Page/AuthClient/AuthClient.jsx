@@ -63,7 +63,7 @@ function AuthClient() {
           console.log("Вход успешный");
           localStorage.setItem("email", valueEmail);
           localStorage.setItem("role", response.data.role);
-          navigate("/");
+          navigate("/mainclient");
           window.location.reload();
         }
         if (response.data === 1) {
@@ -202,7 +202,7 @@ function AuthClient() {
                 setReg(true);
               }}
             >
-              Зарегистрироваться
+              Регистрация
             </button>
           </>
         )}
